@@ -1,0 +1,33 @@
+{
+  "regional": {
+    "rows": 7072,
+    "regions": 17,
+    "years": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "duplicate_location_week_keys": 0,
+    "approximated_rainfall_rows": 7072,
+    "plausibility_flagged_rows": 6,
+    "missing_dengue_counts": 0
+  },
+  "quezon_city": {
+    "rows": 832,
+    "duplicate_week_keys": 0,
+    "missing_nasa_rainfall": 0,
+    "missing_pagasa_rainfall": 572
+  },
+  "mendeley": {
+    "weekly_rows": 260,
+    "missing_original_leptospirosis": 37,
+    "missing_imputed_leptospirosis": 0,
+    "geographic_id_column_available": false,
+    "year_cells_in_original_are_sparse": true
+  }
+}

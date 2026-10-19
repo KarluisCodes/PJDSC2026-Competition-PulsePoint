@@ -1,0 +1,18 @@
+region,weekly_rows,distinct_weeks,missing_core_rows,plausibility_flagged,decision
+BARMM,416,416,0,1,candidate - review flags
+CAR,416,416,0,0,candidate
+MIMAROPA,416,416,0,0,candidate
+NCR,416,416,0,0,candidate
+REGION I,416,416,0,1,candidate - review flags
+REGION II,416,416,0,1,candidate - review flags
+REGION III,416,416,0,0,candidate
+REGION IV-A,416,416,0,0,candidate
+REGION IX,416,416,0,0,candidate
+REGION V,416,416,0,0,candidate
+REGION VI,416,416,0,1,candidate - review flags
+REGION VII,416,416,0,1,candidate - review flags
+REGION VIII,416,416,0,0,candidate
+REGION X,416,416,0,1,candidate - review flags
+REGION XI,416,416,0,0,candidate
+REGION XII,416,416,0,0,candidate
+REGION XIII,416,416,0,0,candidate

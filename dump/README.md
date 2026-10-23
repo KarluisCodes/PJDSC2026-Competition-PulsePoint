@@ -87,14 +87,14 @@ Runs descriptive statistics and generates four core visualizations:
 Run the scripts sequentially from your terminal:
 
 ```bash
-# Step 1: Run Exploratory Data Analysis
+# Step 1: 
 python eda_analysis.py
 
-# Step 2: Run Model Training & Performance Comparison
-python train_models.py
+# Step 2: 
+python dengue_pipeline.py
 
-# Step 3: Run Interpretability & Risk Categorization Pipeline
-python risk_and_shap_pipeline.py
+# Step 3: 
+python dengue_multi_model_pipeline.py
 
 ```
 

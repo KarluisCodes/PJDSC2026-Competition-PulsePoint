@@ -1,3 +1,12 @@
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA_FILE = PROJECT_ROOT / "data" / "processed" / "noah_regional_dengue_master.csv"
+FIGURES_DIR = PROJECT_ROOT / "reports" / "figures"
+RESULTS_DIR = PROJECT_ROOT / "reports" / "predictions"
+FIGURES_DIR.mkdir(parents=True, exist_ok=True)
+RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+
 import pandas as pd
 import numpy as np
 import xgboost as xgb
@@ -8,7 +17,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error
 def main():
     # 1. Load Data
     try:
-        df = pd.read_csv("noah_regional_dengue_master.csv")
+        df = pd.read_csv(DATA_FILE)
     except FileNotFoundError:
         print("Error: 'noah_regional_dengue_master.csv' not found. Please place it in the script directory.")
         return
@@ -144,7 +153,7 @@ def main():
     print(summary_df.to_string(index=False))
     
     # Save results to CSV
-    summary_df.to_csv("model_performance_comparison.csv", index=False)
+    summary_df.to_csv(RESULTS_DIR / "model_performance_comparison.csv", index=False)
     print("\nComparison results successfully saved to 'model_performance_comparison.csv'.")
 
 if __name__ == "__main__":

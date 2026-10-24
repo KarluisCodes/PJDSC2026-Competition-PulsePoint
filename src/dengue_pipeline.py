@@ -1,3 +1,12 @@
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA_FILE = PROJECT_ROOT / "data" / "processed" / "noah_regional_dengue_master.csv"
+FIGURES_DIR = PROJECT_ROOT / "reports" / "figures"
+RESULTS_DIR = PROJECT_ROOT / "reports" / "predictions"
+FIGURES_DIR.mkdir(parents=True, exist_ok=True)
+RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,7 +19,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error
 def main():
     # 1. Load Data
     try:
-        df = pd.read_csv("noah_regional_dengue_master.csv")
+        df = pd.read_csv(DATA_FILE)
     except FileNotFoundError:
         print("Error: 'noah_regional_dengue_master.csv' not found.")
         return
@@ -91,7 +100,7 @@ def main():
     shap.summary_plot(shap_values, X_test, show=False)
     plt.title("SHAP Feature Importance Summary", fontsize=14, fontweight="bold")
     plt.tight_layout()
-    plt.savefig("10_shap_summary_plot.png", dpi=300)
+    plt.savefig(FIGURES_DIR / "10_shap_summary_plot.png", dpi=300)
     plt.close()
 
     # ==========================================
@@ -123,7 +132,7 @@ def main():
     print("\nPredicted Risk Category Counts:")
     print(risk_summary)
 
-    results_df.to_csv("dengue_predictions_with_risk.csv", index=False)
+    results_df.to_csv(RESULTS_DIR / "dengue_predictions_with_risk.csv", index=False)
     print("\nPipeline execution complete! Predictions and risk levels saved to 'dengue_predictions_with_risk.csv'.")
 
 if __name__ == "__main__":

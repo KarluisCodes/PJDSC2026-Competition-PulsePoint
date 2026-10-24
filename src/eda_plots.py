@@ -1,3 +1,12 @@
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA_FILE = PROJECT_ROOT / "data" / "processed" / "noah_regional_dengue_master.csv"
+FIGURES_DIR = PROJECT_ROOT / "reports" / "figures"
+RESULTS_DIR = PROJECT_ROOT / "reports" / "predictions"
+FIGURES_DIR.mkdir(parents=True, exist_ok=True)
+RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -5,7 +14,7 @@ import seaborn as sns
 def main():
     # Load Data
     try:
-        df = pd.read_csv("noah_regional_dengue_master.csv")
+        df = pd.read_csv(DATA_FILE)
     except FileNotFoundError:
         print("Error: 'noah_regional_dengue_master.csv' not found. Please place it in the script directory.")
         return
@@ -21,7 +30,7 @@ def main():
     plt.xlabel("Total Dengue Cases")
     plt.ylabel("Region")
     plt.tight_layout()
-    plt.savefig("07_total_dengue_cases_by_region.png", dpi=300)
+    plt.savefig(FIGURES_DIR / "07_total_dengue_cases_by_region.png", dpi=300)
     plt.close()
 
     # --- Plot 2: Dengue Cases vs Weather Factors (Correlation Heatmap) ---
@@ -31,7 +40,7 @@ def main():
     sns.heatmap(corr, annot=True, cmap="coolwarm", fmt=".2f", linewidths=0.5)
     plt.title("Correlation Matrix: Dengue Cases & Climate Variables", fontsize=14, fontweight="bold")
     plt.tight_layout()
-    plt.savefig("08_weather_dengue_correlation_heatmap.png", dpi=300)
+    plt.savefig(FIGURES_DIR / "08_weather_dengue_correlation_heatmap.png", dpi=300)
     plt.close()
 
     # --- Plot 3: Dengue Cases Distribution across Plausibility Flags ---
@@ -42,7 +51,7 @@ def main():
     plt.xlabel("Plausibility Flag")
     plt.ylabel("Dengue Cases (Log Scale)")
     plt.tight_layout()
-    plt.savefig("09_plausibility_flag_distribution.png", dpi=300)
+    plt.savefig(FIGURES_DIR / "09_plausibility_flag_distribution.png", dpi=300)
     plt.close()
 
     # --- Plot 4: Weekly Dengue Cases by Region (Stacked Subplots) ---
@@ -71,7 +80,7 @@ def main():
 
     plt.suptitle("Weekly Dengue Cases by Region", fontsize=14, y=1.02)
     plt.tight_layout()
-    plt.savefig("11_weekly_dengue_cases_by_region.png", dpi=300, bbox_inches='tight')
+    plt.savefig(FIGURES_DIR / "11_weekly_dengue_cases_by_region.png", dpi=300, bbox_inches='tight')
     plt.close()
 
     print("Successfully generated all EDA plot images, including regional weekly timelines!")

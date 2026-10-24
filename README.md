@@ -133,5 +133,4 @@ Generated outputs are organized under `reports/` where applicable.
 
 - [Notebook Documentation](notebook/README.md)
 - [Data Dictionary](docs/DATA_DICTIONARY.md)
-- [Modeling Notes](docs/MODELING_NOTES.md)
 
